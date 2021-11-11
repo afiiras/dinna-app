@@ -1,0 +1,27 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "client-install": "npm install --prefix client",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --preffix client && npm run build --prefix client"
+  },
+  "author": "Firas Abidli",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "concurrently": "^6.3.0",
+    "express": "^4.17.1",
+    "mongoose": "^6.0.12",
+    "react-redux": "^7.2.6",
+    "react-strap": "^0.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.14",
+    "protobufjs": "^6.11.2"
+  }
+}
