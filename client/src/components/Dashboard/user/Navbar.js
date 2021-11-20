@@ -9,7 +9,6 @@ export default function Navbar() {
     <div className="navbar">
       <div className="avatar">
         <div className="info">
-          <h4 className="title">Kishan Sheth</h4>
           <h6 className="status">Online</h6>
         </div>
       </div>

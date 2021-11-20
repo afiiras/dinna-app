@@ -47,7 +47,7 @@ export default function Sidebar(props) {
   return (
     <div className="sidebar">
       <div className="brand">
-        <h2>dinna</h2>
+        <h2 href="/">dinna</h2>
       </div>
       <ul className="links">
         {links.map((link) => {

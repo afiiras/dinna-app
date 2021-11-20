@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Link as LinkA } from "react-router-dom";
 import { Link as LinkB } from "react-router-dom";
-import { Link as LinkC } from "react-router-dom";
+import { Link as LinkD } from "react-router-dom";
 
 export const Container = styled.div`
   min-height: 692px;
@@ -76,7 +76,7 @@ export const FormInput = styled.input`
   border: none;
   border-radius: 4px;
 `;
-export const FormBtnLink = styled(LinkC)`
+export const FormBtnLink = styled.button`
   background: #01bf71;
   padding: 16px 0;
   border: none;
@@ -93,7 +93,7 @@ export const FormLabel = styled.label`
   font-size: 14px;
   color: #fff;
 `;
-export const Text = styled.span`
+export const LinkF = styled(LinkD)`
   text-align: center;
   margin-top: 24px;
   color: #fff;
@@ -103,6 +103,20 @@ export const Text = styled.span`
 export const TextLink = styled(LinkB)`
   text-align: center;
   margin-top: 24px;
+  color: #fff;
+  font-size: 14px;
+`;
+export const Span = styled.span`
+  text-align: center;
+  margin-top: 24px;
+  color: #fff;
+  font-size: 14px;
+`;
+
+export const Error = styled.div`
+  text-align: center;
+  margin-top: 24px;
+  margin-bottom: 24px;
   color: #fff;
   font-size: 14px;
 `;

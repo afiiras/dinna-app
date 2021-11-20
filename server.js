@@ -1,36 +1,27 @@
+require("dotenv").config({ path: "./config.env" });
 const express = require("express");
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
-const path = require("path");
+const connectDB = require("./config/db");
+const errorhandler = require("./middleware/error");
 
-const Users = require("./Routes/api/Users");
+// Connect DB
+connectDB();
 
 const app = express();
 
-// Bodyparser MiddleWare
-app.use(bodyParser.json());
+app.use(express.json());
 
-// DB Config
-const db = require("./config/keys").mongoURI;
+app.use("/api/auth", require("./routes/auth"));
+app.use("/api/private", require("./routes/private"));
+//Error Handler
+app.use(errorhandler);
 
-// Connect to Mongo
-mongoose
-  .connect(db)
-  .then(() => console.log("MongoDB connected..."))
-  .catch((err) => console.log(err));
+const PORT = process.env.PORT || 5000;
 
-//Use Routes
-app.use("/api/Users", Users);
-// Serve static assets if in production
-if (process.env.NODE_ENV === "production") {
-  // Set static folder
-  app.use(express.static("client/build"));
+const server = app.listen(PORT, () =>
+  console.log(`server running on port ${PORT}`)
+);
 
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-  });
-}
-
-const port = process.env.PORT || 5000;
-
-app.listen(port, () => console.log(`server is connected on port ${port}`));
+process.on("unhandledRejection", (err, promise) => {
+  console.log(`Logged Error: ${err}`);
+  server.close(() => process.exit(1));
+});
